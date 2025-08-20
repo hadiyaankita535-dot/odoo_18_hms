@@ -1,0 +1,47 @@
+<odoo>
+    <record id='view_form_doctor_patient_wizard' model='ir.ui.view'>
+        <field name='name'>doctor.patient.wizard.form</field>
+        <field name='model'>doctor.patient.wizard</field>
+        <field name='arch' type='xml'>
+            <form string='Patient Wizard'>
+                <group>
+                    <field name="is_new_patient"/>
+                </group>
+
+                <!-- New patient form -->
+                <group invisible="not is_new_patient">
+                    <div class='oe_right oe_avatar'>
+                        <field name='patient_photo' widget='image' class='oe_avatar'
+                               options="{'preview_image': 'photo'}"/>
+                    </div>
+                    <field name="patient_name"/>
+                    <field name="patient_gender"/>
+                    <field name="patient_date_of_birth"/>
+                    <field name="patient_phone"/>
+                    <field name="patient_address"/>
+                    <field name="patient_disease_ids"/>
+                </group>
+
+                <!-- Old patient edit -->
+                <group invisible="is_new_patient">
+                    <field name="patient_id"/>
+                    <field name="old_age" readonly="1"/>
+                    <field name="old_phone"/>
+                    <field name="old_disease_ids"/>
+                </group>
+
+                <footer>
+                    <button string="Confirm" type="object" name="action_confirm" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_doctor_patient_wizard" model="ir.actions.act_window">
+        <field name="name">Patients Wizard</field>
+        <field name="res_model">doctor.patient.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

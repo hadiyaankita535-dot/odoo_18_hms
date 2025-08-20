@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+   
+    <template id="report_patient_layout">
+        <t t-name="Hospital_odoo18.action_report_hospital_patient">
+        <!-- <t t-call="web.html_container"> -->
+            <t t-foreach="docs" t-as="patient">
+                <div class="page">
+
+                    <!-- Custom Header -->
+                    <div class = "header" style="text-align:center; border-bottom:2px solid #800000; padding:10px;">
+                        <h2 style="color:#800000; margin:0;">Patient Report</h2>
+                    </div>
+
+                    <main style="margin-top:20px;">
+                        <h3 style="text-align:center; color:#800000;">Patient Information</h3>
+
+                        <p><strong>Name:</strong> <span t-field="patient.name"/></p>
+                        <p><strong>Gender:</strong> <span t-field="patient.gender"/></p>
+                        <p><strong>Date of Birth:</strong> <span t-field="patient.date_of_birth"/></p>
+                        <p><strong>Age:</strong> <span t-field="patient.age_display"/></p>
+                        <p><strong>Doctor:</strong> <span t-field="patient.doctor_id"/></p>
+                        <p><strong>Department:</strong> <span t-field="patient.department_id"/></p>
+                        <p><strong>Disease:</strong> <span t-field="patient.disease_id"/></p>
+                        <p><strong>Description:</strong> <span t-field="patient.description"/></p>
+                    </main>
+
+                    <!-- Custom Footer -->
+                    <div class="footer" style="text-align:center; border-top:2px solid #800000; margin-top:30px; padding:10px; font-size:12px;">
+                    </div>
+
+                </div>
+            </t>
+        </t>
+</template>
+
+</odoo>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id='view_list_hospital_disease' model='ir.ui.view'>
+        <field name='name'>hospital.disease.list</field>
+        <field name='model'>hospital.disease</field>
+        <field name='type'>list</field> 
+        <field name='arch' type='xml'>
+            <list string='Disease'>
+                <field name='name'/>
+                <field name='department_id'/>
+            </list>
+        </field>
+    </record>
+
+    <record id='view_form_disease' model='ir.ui.view'>
+        <field name='name'>hospital.disease.form</field>
+        <field name='model'>hospital.disease</field>
+        <field name='arch' type='xml'>
+            <form string='Disease'>
+                <sheet>
+                <div class='oe_title'>
+                    <h1>
+                        <field name='name' class='o_field_widget oe_inline'/>
+                    </h1>
+                </div> 
+
+                <group>
+                    <field name='department_id' string='Department'/>
+                </group>
+                <notebook>
+                        <page string='Patients'>
+                            <group>
+                                <field name='patient_id' />
+                            </group>
+                        </page>
+                </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id='action_hospital_disease' model='ir.actions.act_window'>
+        <field name='name'>Disease</field>
+        <field name='res_model'>hospital.disease</field>
+        <field name='view_mode'>list,form</field>
+    </record>
+
+    <!-- Menuitem -->
+    <menuitem id='menu_hospital_root' name='Hospital Management' sequence='1'/>
+    <menuitem id='hospital_disease_diseases' name='Disease' parent='hospital_configuration_menu' action='action_hospital_disease' sequence='3'/>
+
+</odoo>

@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+    <record id="view_kanban_hospital_department" model="ir.ui.view">
+        <field name="name">hospital.department.kanban</field>
+        <field name="model">hospital.department</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_department" create="true">
+                <field name="name"/>
+                <field name="doctor_id"/>
+                <!-- <field name="patient_id"/>
+                <field name="disease_id"/> -->
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record oe_kanban_global_click">
+
+                            <div class="o_kanban_header">
+                                <strong class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </strong>
+                            </div>
+
+                            <div class="o_kanban_body">
+                                <div class="o_kanban_badge mt4">
+                                    <span class="fa fas fa-dragon text-primary"/> Doctors:
+                                    <field name="doctor_id" widget="many2many_tags" options="{'no_create': True}"/>
+                                </div>
+                            </div>
+
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id='view_list_hospital_doctor' model='ir.ui.view'>
+        <field name='name'>hospital.deparment.list</field>
+        <field name='model'>hospital.department</field>
+        <field name='type'>list</field> 
+        <field name='arch' type='xml'>
+            <list string='Departments'>
+                <field name='name'/>
+                <field name='doctor_id' widget="many2many_tags"/>
+                <field name='patient_id'/>
+                <field name='disease_id'/>
+            </list>
+        </field>
+    </record>
+
+
+
+    <record id='view_form_hospital_department' model='ir.ui.view'>
+        <field name='name'>hospital.department.form</field>
+        <field name='model'>hospital.department</field>
+        <field name='arch' type='xml'>
+            <form string='Departments' edit='0'>
+    <sheet>
+        <div class='oe_title'>
+            <h1>
+                <field name='name' class='o_field_widget oe_inline'/>
+            </h1>
+        </div>
+
+        <notebook>
+            <page string='Doctors'>
+                <field name='doctor_id'/>
+            </page>
+            <page string='Patients'>
+                <field name='patient_id'/>
+            </page>
+        </notebook>
+    </sheet>
+</form>
+
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id='action_hospital_department' model='ir.actions.act_window'>
+        <field name='name'>Departments</field>
+        <field name='res_model'>hospital.department</field>
+        <field name='view_mode'>kanban,list,form</field>
+    </record>
+
+    <!-- Menuitem -->
+    <menuitem id='menu_hospital_root' name='Hospital Management' sequence='1'/>
+    <menuitem id='hospital_configuration_menu' name='Configuration' parent='menu_hospital_root' sequence='3'/>
+    <menuitem id='hospital_department_deparments' name='Departments' parent='hospital_configuration_menu' action='action_hospital_department' sequence='3'/>
+
+</odoo>

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+Hospital_odoo18.access_hospital_doctor,access_hospital_doctor,Hospital_odoo18.model_hospital_doctor,base.group_user,1,1,1,1
+Hospital_odoo18.access_hospital_department,access_hospital_department,Hospital_odoo18.model_hospital_department,base.group_user,1,1,1,1
+Hospital_odoo18.access_hospital_patient,access_hospital_patient,Hospital_odoo18.model_hospital_patient,base.group_user,1,1,1,1
+Hospital_odoo18.access_hospital_disease,access_hospital_disease,Hospital_odoo18.model_hospital_disease,base.group_user,1,1,1,1
+Hospital_odoo18.access_doctor_patient_wizard,access_doctor_patient_wizard,Hospital_odoo18.model_doctor_patient_wizard,base.group_user,1,1,1,1

@@ -1,0 +1,61 @@
+<odoo>
+
+    <record id="view_list_collage_student" model="ir.ui.view">
+        <field name="name">collage.student.list</field>
+        <field name="model">collage.student</field>
+        <field name="arch" type="xml">
+            <list string="Students">
+                <field name="name"/>
+                <field name="roll_no"/>
+                <field name="age"/>
+                <field name="gender"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_form_collage_student" model="ir.ui.view">
+        <field name="name">collage.student.form</field>
+        <field name="model">collage.student</field>
+        <field name="arch" type="xml">
+            <form string="Students">
+                <header>
+                <button name="action_read_methods_demo"
+                        type="object"
+                        string="Test Read Methods"
+                        class="btn-primary"/>
+                <button name="action_relational_commands_demo"
+                    type="object"
+                    string="Test Relational Commands"
+                    class="btn-primary"/>
+                <button name="unlink"
+                 type="object"
+                string="Delete Student"
+
+                class="btn-danger"/>
+                </header>
+                <group>
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="roll_no"/>
+                    <field name="age"/>
+                    <field name="skill_ids"/>
+                    <field name="gender"/>
+                    <field name="course_id"/>
+                    <field name="photo"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_collage_student" model="ir.actions.act_window">
+        <field name="name">Students</field>
+        <field name="res_model">collage.student</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+    <menuitem id="menu_collage_root" name="College Management" sequence="1"/>
+    <menuitem id="collage_student" name="Student" parent="menu_collage_root" action="action_collage_student" sequence="2"/>
+</odoo>
+

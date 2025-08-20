@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	
+	<!-- Doctor Report Template -->
+	<template id="report_hospital_doctor">
+		<t t-name="Hospital_odoo18.report_hospital_doctor">
+		<t t-call="web.external_layout">
+			<t t-foreach="docs" t-as="doctor">
+				<div class="page">
+
+					<!-- Custom Header -->
+
+					<!-- <div class ="header" style="text-align:center; border-bottom:2px solid #004080; padding:10px;">
+						<h2 style="color:#004080; margin:0;">Doctor Report</h2>
+					</div> -->
+
+
+					<main style="margin-top:20px;">
+						<h3 style="text-align:center; color:#004080;">Doctor Information</h3>
+						<p><strong>Doctor ID:</strong> <span t-field="doctor.serial_no"/></p>
+						<p><strong>Name:</strong> <span t-field="doctor.name"/></p>
+						<p><strong>Experience:</strong> <span t-field="doctor.experience"/> Years</p>
+						<p><strong>Status:</strong> <span t-field="doctor.status"/></p>
+						<p><strong>Department:</strong> <span t-field="doctor.department_id.name"/></p>
+
+						<!-- Patients Table -->
+						<h4 style="margin-top:20px;">Patients</h4>
+						<table class="table table-sm o_main_table" style="width:100%; border:1px solid black; border-collapse: collapse;">
+							<thead style="background:#eee;">
+								<tr>
+									<th style="border:1px solid black; padding:4px;">Patient Name</th>
+									<th style="border:1px solid black; padding:4px;">Gender</th>
+									<th style="border:1px solid black; padding:4px;">Age</th>
+									<th style="border:1px solid black; padding:4px;">Contact No</th>
+									<th style="border:1px solid black; padding:4px;">Disease</th>
+								</tr>
+							</thead>
+							<tbody>
+								<t t-foreach="doctor.patient_id" t-as="patient">
+									<tr>
+										<td style="border:1px solid black; padding:4px;">
+											<span t-field="patient.name"/>
+										</td>
+										<td style="border:1px solid black; padding:4px;">
+											<span t-field="patient.gender"/>
+										</td>
+										<td style="border:1px solid black; padding:4px;">
+											<span t-field="patient.age_display"/>
+										</td>
+										<td style="border:1px solid black; padding:4px;">
+											<span t-field="patient.phone_no"/>
+										</td>
+										<td style="border:1px solid black; padding:4px;">
+											<span t-field="patient.disease_id"/>
+										</td>
+									</tr>
+								</t>
+							</tbody>
+						</table>
+					</main>
+
+					<!-- Custom Footer -->
+					<!-- <div class = "footer" style="text-align:center; border-top:2px solid #004080; margin-top:30px; padding:10px; font-size:12px;">
+					</div> -->
+
+				</div>
+			</t>
+		</t>
+	</t>
+	</template>
+
+</odoo>

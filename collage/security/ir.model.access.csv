@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+collage.access_collage_course,access_collage_course,collage.model_collage_course,base.group_user,1,1,1,1
+collage.access_collage_student,access_collage_student,collage.model_collage_student,base.group_user,1,1,1,1
+collage.access_collage_department,access_collage_department,collage.model_collage_department,base.group_user,1,1,1,1
+collage.access_collage_skill,access_collage_skill,collage.model_collage_skill,base.group_user,1,1,1,1

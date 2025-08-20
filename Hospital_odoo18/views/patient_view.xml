@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+    
+    <record id='view_kanban_hospital_patient' model='ir.ui.view'>
+        <field name='name'>hospital.patient.kanban</field>
+        <field name='model'>hospital.patient</field>
+        <field name='arch' type='xml'>
+            <kanban class='o_kanban_patient' create='true'>
+                <field name="serial_no"/>
+                <field name='name'/>
+                <field name='gender'/>
+                <field name='date_of_birth'/>
+                <field name='age_display'/>
+                <field name='phone_no'/>
+                <field name='department_id'/>
+                <field name='disease_id'/>
+                <field name='doctor_id'/>
+                <field name='photo'/>
+
+                <templates>
+                    <t t-name='kanban-box'>
+                        <div class='oe_kanban_global_click'>
+                            <div class='o_kanban_image'>
+                                <img t-att-src='"/web/image/hospital.patient/" + record.id.raw_value + "/photo"'
+                                    class='o_kanban_image img-fluid'
+                                    style='width: 80px; height: 80px; object-fit: cover;'/>
+                            </div>
+                            <div class='o_kanban_details'>
+                                <field name="serial_no"/>
+                                <strong><field name='name'/></strong>
+                                <div><span>Gender: </span><field name='gender'/></div>
+                                <div><span>Age: </span><field name='age_display'/></div>
+                                <div><span>Department: </span><field name='department_id'/></div>
+                                <div><span>Doctor: </span><field name='doctor_id'/></div>
+                            </div>
+                        </div>     
+                    </t>
+                </templates>
+
+            </kanban>
+        </field>
+    </record>
+
+    <record id='view_form_hospital_patient' model='ir.ui.view'>
+        <field name='name'>hospital.patient.form</field>
+        <field name='model'>hospital.patient</field>
+        <field name='arch' type='xml'>
+        <form string='Patient'>
+            <sheet>
+                <div class='oe_title'>
+                    <h1>
+                        <field name="serial_no"/>
+                        <field name='name' class='o_field_widget oe_inline'/>
+                    </h1>
+                </div>
+                <div class='oe_right oe_avatar'>
+                    <field name='photo' widget='image' class='oe_avatar'
+                           options="{'preview_image': 'photo'}"/>
+                </div>
+                <group>
+                    <group>
+                        <field name='gender'/>
+                        <field name='date_of_birth' required='1'/>
+                        <field name='age_display' readonly='1'/>
+                        <field name='phone_no'/>
+                        <field name='address'/>
+                        <field name='department_id'/>
+                        <field name='departments' invisible='1'/>
+                        <field name='doctor_id'/>
+
+                    </group>
+                </group>
+                <notebook>
+                    <page string='Diseases'>
+                        <field name='disease_id'/>
+                    </page>
+                    <page string='Description'>
+                        <field name='description'/>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+
+        </field>
+    </record>
+    <record id='view_patient_list' model='ir.ui.view'>
+    <field name='name'>hospital.patient.list</field>
+    <field name='model'>hospital.patient</field>
+    <field name='arch' type='xml'>
+        <list string='Patients'>
+            <field name='name'/>
+            <field name='gender'/>
+            <field name='age_display'/>
+            <field name='phone_no'/>
+            <field name='doctor_id'/>
+            <field name='department_id'/>
+            <field name='disease_id' widget="many2many_tags"/>
+        </list>
+    </field>
+</record>
+
+   
+    <!-- Action -->
+    <record id='action_hospital_patient' model='ir.actions.act_window'>
+        <field name='name'>Patients</field>
+        <field name='res_model'>hospital.patient</field>
+        <field name='view_mode'>kanban,form,list</field>
+    </record>
+
+    <!-- Menuitem -->
+    <menuitem id='menu_hospital_root' name='Hospital Management' sequence='1'/>
+    <menuitem id='hospital_patient' name='Patients' parent='menu_hospital_root' action='action_hospital_patient' sequence='2'/>
+    
+</odoo>

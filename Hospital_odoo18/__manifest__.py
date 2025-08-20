@@ -1,0 +1,20 @@
+{
+    'name': 'Hospital Management',
+    'version': '18.0',
+    'summary': 'Hospital Management System',
+    'depends': ['base'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/doctor_view.xml',
+        'views/patient_view.xml',
+        'views/department_view.xml',
+        'views/disease_view.xml',
+        'wizard/doctor_wizard_view.xml',
+        'data/sequence.xml',  
+        'report/hospital_action_report.xml',      
+        'report/doctor_report_template.xml',
+        'report/patient_report_template.xml',
+    ],
+    'installable': True,
+    'application': True,
+}
